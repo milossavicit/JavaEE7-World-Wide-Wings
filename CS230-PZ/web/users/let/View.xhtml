@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value=""></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <center><h1>View</h1></center>
+                <h:panelGrid columns="2" styleClass="forma">
+                    <h:outputText value="#{bundle.ViewLetLabel_id}"/>
+                    <h:outputText value="#{letController.selected.id}" title="#{bundle.ViewLetTitle_id}"/>
+                    <h:outputText value="Vreme polaska: "/>
+                    <h:outputText value="#{letController.selected.vremePolaska}" title="#{bundle.ViewLetTitle_vremePolaska}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="Vreme dolaska: "/>
+                    <h:outputText value="#{letController.selected.vremeDolaska}" title="#{bundle.ViewLetTitle_vremeDolaska}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="Aerodrom ID-dolazak: "/>
+                    <h:outputText value="#{letController.selected.aerodromIdDolazak}" title="#{bundle.ViewLetTitle_aerodromIdDolazak}"/>
+                    <h:outputText value="Aerodrom ID-polazak: "/>
+                    <h:outputText value="#{letController.selected.aerodromIdPolazak}" title="#{bundle.ViewLetTitle_aerodromIdPolazak}"/>
+                    <h:outputText value="Avion ID: "/>
+                    <h:outputText value="#{letController.selected.avionId}" title="#{bundle.ViewLetTitle_avionId}"/>
+                    <h:outputText value="#{bundle.ViewLetLabel_pilot}"/>
+                    <h:outputText value="#{letController.selected.pilot}" title="#{bundle.ViewLetTitle_pilot}"/>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="2">
+                <h:commandButton action="#{letController.prepareList}" value="Prikaži sve letove"/>
+                <h:button outcome="/users/index" value="#{bundle.ViewLetIndexLink}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

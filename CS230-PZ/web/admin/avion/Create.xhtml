@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value=""></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <center><h1>Novi avion</h1></center>
+                <h:panelGrid columns="2" styleClass="forma">
+                    <h:outputLabel value="#{bundle.CreateAvionLabel_model}" for="model" />
+                    <h:inputText id="model" value="#{avionController.selected.model}" title="#{bundle.CreateAvionTitle_model}" required="true" requiredMessage="#{bundle.CreateAvionRequiredMessage_model}"/>
+                    <h:outputLabel value="Br. mesta: " for="brMesta" />
+                    <h:inputText id="brMesta" value="#{avionController.selected.brMesta}" title="#{bundle.CreateAvionTitle_brMesta}" required="true" requiredMessage="#{bundle.CreateAvionRequiredMessage_brMesta}"/>
+                    <h:outputLabel value="Registarski br.: " for="registarskiBr" />
+                    <h:inputText id="registarskiBr" value="#{avionController.selected.registarskiBr}" title="#{bundle.CreateAvionTitle_registarskiBr}" required="true" requiredMessage="#{bundle.CreateAvionRequiredMessage_registarskiBr}"/>
+                    <h:outputLabel value="Kompanija: " for="idKompanije" />
+                    <h:selectOneMenu id="idKompanije" value="#{avionController.selected.idKompanije}" title="#{bundle.CreateAvionTitle_idKompanije}" required="true" requiredMessage="#{bundle.CreateAvionRequiredMessage_idKompanije}">
+                        <f:selectItems value="#{kompanijaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="3">
+                <h:commandButton action="#{avionController.create}" value="Sačuvaj" />
+                <h:commandButton action="#{avionController.prepareList}" value="Prikaži sve avione" immediate="true"/>
+                <h:button outcome="/admin/index" value="#{bundle.CreateAvionIndexLink}"/>
+                </h:panelGrid>
+                <br />
+                <br />
+                
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

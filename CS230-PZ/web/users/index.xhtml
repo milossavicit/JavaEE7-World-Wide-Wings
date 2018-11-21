@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Logged in Users Home Page</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <h3>Korisnička sekcija</h3>
+        <p><h:link outcome="/index" value="Početna" /></p>
+        <p>
+            <h:form>
+                <h:commandLink action="#{logoutBean.logout}" value="Logout" />
+            </h:form>
+        </p>
+        <br />
+        <h:link outcome="aerodrom/List" value="Prikaži sve aerodrome"/>
+        <br />
+        <h:link outcome="avion/List" value="Prikaži sve avione"/>
+        <br />
+        <h:link outcome="kompanija/List" value="Prikaži sve kompanije"/>
+        <br />
+        <h:link outcome="let/List" value="Prikaži sve letove"/>
+    </h:body>
+</html>
+

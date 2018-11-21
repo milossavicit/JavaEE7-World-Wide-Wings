@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListLetEmpty}" rendered="#{letController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{letController.items.rowCount > 0}" styleClass="tabela">
+                    <h:outputText value="#{letController.pagination.pageFirstItem + 1}..#{letController.pagination.pageLastItem + 1}/#{letController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{letController.previous}" value="#{bundle.Previous} #{letController.pagination.pageSize}" rendered="#{letController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{letController.next}" value="#{bundle.Next} #{letController.pagination.pageSize}" rendered="#{letController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{letController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLetTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLetTitle_vremePolaska}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vremePolaska}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLetTitle_vremeDolaska}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vremeDolaska}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLetTitle_aerodromIdDolazak}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aerodromIdDolazak}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLetTitle_aerodromIdPolazak}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aerodromIdPolazak}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLetTitle_avionId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.avionId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLetTitle_pilot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pilot}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandButton action="#{letController.prepareView}" value="#{bundle.ListLetViewLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <h:outputLink value="/CS230-PZ/webresources/let" >JSON prikaz</h:outputLink>
+                <br />
+                <br />
+                <h:link outcome="/users/index" value="#{bundle.ListLetIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAvionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAvionEmpty}" rendered="#{avionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{avionController.items.rowCount > 0}" styleClass="tabela">
+                    <h:outputText value="#{avionController.pagination.pageFirstItem + 1}..#{avionController.pagination.pageLastItem + 1}/#{avionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{avionController.previous}" value="#{bundle.Previous} #{avionController.pagination.pageSize}" rendered="#{avionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{avionController.next}" value="#{bundle.Next} #{avionController.pagination.pageSize}" rendered="#{avionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{avionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAvionTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAvionTitle_model}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.model}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAvionTitle_brMesta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.brMesta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAvionTitle_registarskiBr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.registarskiBr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAvionTitle_idKompanije}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idKompanije}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandButton action="#{avionController.prepareView}" value="#{bundle.ListAvionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandButton action="#{avionController.prepareEdit}" value="#{bundle.ListAvionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandButton action="#{avionController.destroy}" value="#{bundle.ListAvionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{avionController.prepareCreate}" value="Kreiraj novi avion"/>
+                <br/>
+                <br/>
+                <h:outputLink value="/CS230-PZ/webresources/avion" >JSON prikaz</h:outputLink>
+                <br />
+                <br />
+                <h:link outcome="/admin/index" value="#{bundle.ListAvionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,154 @@
+root { 
+    display: block;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: url(../images/bg.jpg) no-repeat center center fixed;
+    font-size: small;
+}
+
+a {
+    color: #e33b06;
+    font-size: medium;
+}
+
+table {
+    empty-cells: show;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+table.forma {
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+
+form.jsfcrud_list_form th, td th {
+    font-size: small;
+    color: #efefef;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #353c3d;
+    border-bottom-color: #353c3d;
+    border-left-color: #90b4bd;
+    border-right-color: #90b4bd;
+    letter-spacing: 3px;
+    text-align: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #353c3d;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: large;
+}
+
+form.jsfcrud_list_form td, td td {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #b2d5d6;
+    border-right-color: #b2d5d6;
+    vertical-align: baseline;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-align:center;
+}
+
+tr.jsfcrud_odd_row {
+    background-color: #fefeff;
+    color: #4e6a71;
+}
+
+
+tr.jsfcrud_even_row {
+    background-color: #eff5fa;
+    color: #4e6a71;
+}
+
+#busyImage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+select {
+    max-width: 130px;
+    min-width: 130px;
+    width: 130px !important;
+}
+
+input[type=submit], input[type=button] {
+  background-color: #0693cd;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size:15px;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 10px;
+  width: auto;
+  margin: 0 auto;
+}
+
+input[value="View"] {
+  background-color: #ffb31c;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size:15px;
+  font-weight: normal;
+  line-height: 1.4;
+  padding: 7px;
+  width: auto;
+  margin: 0 auto;
+}
+
+input[value="Edit"] {
+  background-color: #15779b;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size:15px;
+  font-weight: normal;
+  line-height: 1.4;
+  padding: 7px;
+  width: auto;
+  margin: 0 auto;
+}
+
+input[value="Destroy"] {
+  background-color: #c61d1d;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size:15px;
+  font-weight: normal;
+  line-height: 1.4;
+  padding: 7px;
+  width: auto;
+  margin: 0 auto;
+}

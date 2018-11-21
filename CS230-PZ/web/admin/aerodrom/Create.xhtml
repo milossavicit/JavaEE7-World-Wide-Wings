@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value=""></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <center><h1>Novi aerodrom</h1></center>
+                <h:panelGrid columns="2" styleClass="forma">
+                    <h:outputLabel value="#{bundle.CreateAerodromLabel_grad}" for="grad" />
+                    <h:inputText id="grad" value="#{aerodromController.selected.grad}" title="#{bundle.CreateAerodromTitle_grad}" required="true" requiredMessage="#{bundle.CreateAerodromRequiredMessage_grad}"/>
+                    <h:outputLabel value="Država: " for="drzava" />
+                    <h:inputText id="drzava" value="#{aerodromController.selected.drzava}" title="#{bundle.CreateAerodromTitle_drzava}" required="true" requiredMessage="#{bundle.CreateAerodromRequiredMessage_drzava}"/>
+                    <h:outputLabel value="#{bundle.CreateAerodromLabel_naziv}" for="naziv" />
+                    <h:inputText id="naziv" value="#{aerodromController.selected.naziv}" title="#{bundle.CreateAerodromTitle_naziv}" required="true" requiredMessage="#{bundle.CreateAerodromRequiredMessage_naziv}"/>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="3">
+                <h:commandButton action="#{aerodromController.create}" value="Sačuvaj" />
+                <h:commandButton action="#{aerodromController.prepareList}" value="Prikaži sve aerodrome" immediate="true"/>
+                <h:button outcome="/admin/index" value="#{bundle.CreateAerodromIndexLink}"/>
+                </h:panelGrid>
+                <br />
+                <br />               
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

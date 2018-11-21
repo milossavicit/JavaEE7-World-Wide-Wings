@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">      
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAerodromTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAerodromEmpty}" rendered="#{aerodromController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{aerodromController.items.rowCount > 0}">
+                    <h:outputText value="#{aerodromController.pagination.pageFirstItem + 1}..#{aerodromController.pagination.pageLastItem + 1}/#{aerodromController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{aerodromController.previous}" value="#{bundle.Previous} #{aerodromController.pagination.pageSize}" rendered="#{aerodromController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{aerodromController.next}" value="#{bundle.Next} #{aerodromController.pagination.pageSize}" rendered="#{aerodromController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{aerodromController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAerodromTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAerodromTitle_grad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.grad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAerodromTitle_drzava}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.drzava}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAerodromTitle_naziv}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.naziv}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandButton action="#{aerodromController.prepareView}" value="#{bundle.ListAerodromViewLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <h:outputLink value="/CS230-PZ/webresources/aerodrom" >JSON prikaz</h:outputLink>
+                <br />
+                <br />
+                <h:link outcome="/users/index" value="#{bundle.ListAerodromIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

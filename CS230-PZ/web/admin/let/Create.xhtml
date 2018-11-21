@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value=""></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <center><h1>Novi let</h1></center>
+                <h:panelGrid columns="2" styleClass="forma">
+                    <h:outputLabel value="Vreme polaska:" for="vremePolaska" />
+                    <h:inputText id="vremePolaska" p:placeholder="mm/dd/yyyy hh:mm:ss" value="#{letController.selected.vremePolaska}" title="#{bundle.CreateLetTitle_vremePolaska}" required="true" requiredMessage="#{bundle.CreateLetRequiredMessage_vremePolaska}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="Vreme dolaska:" for="vremeDolaska" />
+                    <h:inputText id="vremeDolaska" p:placeholder="mm/dd/yyyy hh:mm:ss" value="#{letController.selected.vremeDolaska}" title="#{bundle.CreateLetTitle_vremeDolaska}" required="true" requiredMessage="#{bundle.CreateLetRequiredMessage_vremeDolaska}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="Aerodrom-poletanje:" for="aerodromIdDolazak" />
+                    <h:selectOneMenu id="aerodromIdDolazak" value="#{letController.selected.aerodromIdDolazak}" title="#{bundle.CreateLetTitle_aerodromIdDolazak}" required="true" requiredMessage="#{bundle.CreateLetRequiredMessage_aerodromIdDolazak}">
+                        <f:selectItems value="#{aerodromController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Aerodrom-sletanje:" for="aerodromIdPolazak" />
+                    <h:selectOneMenu id="aerodromIdPolazak" value="#{letController.selected.aerodromIdPolazak}" title="#{bundle.CreateLetTitle_aerodromIdPolazak}" required="true" requiredMessage="#{bundle.CreateLetRequiredMessage_aerodromIdPolazak}">
+                        <f:selectItems value="#{aerodromController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Avion:" for="avionId" />
+                    <h:selectOneMenu id="avionId" value="#{letController.selected.avionId}" title="#{bundle.CreateLetTitle_avionId}" required="true" requiredMessage="#{bundle.CreateLetRequiredMessage_avionId}">
+                        <f:selectItems value="#{avionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Pilot:" for="pilot" />
+                    <h:selectOneMenu id="pilot" value="#{letController.selected.pilot}" title="#{bundle.CreateLetTitle_pilot}" >
+                        <f:selectItems value="#{usersController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="3">
+                    <h:commandButton action="#{letController.create}" value="Sačuvaj"/>
+                    <h:commandButton action="#{letController.prepareList}" value="Prikaži sve letove" immediate="true"/>
+                    <h:button outcome="/admin/index" value="#{bundle.CreateLetIndexLink}"/>
+                </h:panelGrid>
+                <br />
+                <br />
+                
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

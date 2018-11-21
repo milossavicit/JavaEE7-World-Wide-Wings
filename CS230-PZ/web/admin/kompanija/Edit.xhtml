@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value=""></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <center><h1>Izmeni kompaniju</h1></center>
+                <h:panelGrid columns="2" styleClass="forma">
+                    <h:outputLabel value="Naziv kompanije: " for="nazivKompanije" />
+                    <h:inputText id="nazivKompanije" value="#{kompanijaController.selected.nazivKompanije}" title="#{bundle.EditKompanijaTitle_nazivKompanije}" required="true" requiredMessage="#{bundle.EditKompanijaRequiredMessage_nazivKompanije}"/>
+                    <h:outputLabel value="Država: " for="drzava" />
+                    <h:inputText id="drzava" value="#{kompanijaController.selected.drzava}" title="#{bundle.EditKompanijaTitle_drzava}" required="true" requiredMessage="#{bundle.EditKompanijaRequiredMessage_drzava}"/>
+                    <h:outputLabel value="Sedište: " for="sediste" />
+                    <h:inputText id="sediste" value="#{kompanijaController.selected.sediste}" title="#{bundle.EditKompanijaTitle_sediste}" required="true" requiredMessage="#{bundle.EditKompanijaRequiredMessage_sediste}"/>
+                </h:panelGrid>
+                <h:panelGrid columns="4">
+                <h:commandButton action="#{kompanijaController.update}" value="Sačuvaj"/>
+                <h:button outcome="View" value="Prikaži"/>
+                <h:commandButton action="#{kompanijaController.prepareList}" value="Prikaži sve kompanije" immediate="true"/>
+                <h:button outcome="/admin/index" value="#{bundle.EditKompanijaIndexLink}" />
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

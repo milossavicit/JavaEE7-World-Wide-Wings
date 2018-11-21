@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value=""></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <center><h1>View</h1></center>
+                <h:panelGrid columns="2" styleClass="forma">
+                    <h:outputText value="#{bundle.ViewAerodromLabel_id}"/>
+                    <h:outputText value="#{aerodromController.selected.id}" title="#{bundle.ViewAerodromTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAerodromLabel_grad}"/>
+                    <h:outputText value="#{aerodromController.selected.grad}" title="#{bundle.ViewAerodromTitle_grad}"/>
+                    <h:outputText value="#{bundle.ViewAerodromLabel_drzava}"/>
+                    <h:outputText value="#{aerodromController.selected.drzava}" title="#{bundle.ViewAerodromTitle_drzava}"/>
+                    <h:outputText value="#{bundle.ViewAerodromLabel_naziv}"/>
+                    <h:outputText value="#{aerodromController.selected.naziv}" title="#{bundle.ViewAerodromTitle_naziv}"/>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="2">
+                <h:commandButton action="#{aerodromController.destroyAndView}" value="#{bundle.ViewAerodromDestroyLink}"/>
+                <h:button outcome="Edit" value="#{bundle.ViewAerodromEditLink}"/>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="3">
+                <h:commandButton action="#{aerodromController.prepareCreate}" value="Kreiraj novi aerodrom" />
+                <h:commandButton action="#{aerodromController.prepareList}" value="Prikaži sve aerodrome"/>
+                <h:button outcome="/admin/index" value="#{bundle.ViewAerodromIndexLink}"/>
+                </h:panelGrid>              
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

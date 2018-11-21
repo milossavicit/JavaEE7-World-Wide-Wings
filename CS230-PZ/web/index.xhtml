@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CS230-PZ</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <center><h1>World Wide Wings</h1></center>
+        <center><h2>CS230-PZ</h2></center>
+        <center><h3>Miloš Savić 2377</h3></center>
+
+        <center><p><h:button outcome="admin/index" value="Admin sekcija" />
+                <h:outputText value=" "/>
+                <h:button outcome="users/index" value="Korisnička sekcija" /></p></center>
+
+        <h:form>
+            <center><h:commandLink action="#{logoutBean.logout}" value="Logout" /></center>         
+        </h:form>
+        <br/>
+        <h:form rendered="#{jmsPorukaModel.msgText == null}">
+            <h:panelGrid columns="2" styleClass="forma">
+                <h2>Koliko često koristite ovu aplikaciju?</h2>
+                <h:outputLabel value="" />
+                <h:selectOneRadio  id="msgText" value="#{jmsPorukaModel.msgText}" style="display: inline-table;">
+                    <f:selectItem itemValue="1" itemLabel="Svaki dan" />
+                    <f:selectItem itemValue="2" itemLabel="Jednom sedmično" />
+                    <f:selectItem itemValue="3" itemLabel="Jenom mesečno" />
+                </h:selectOneRadio>
+                <h:panelGroup/>
+                <h:commandButton value="Glasaj" action="#{jmsPorukaController.sendMsg()}" />
+            </h:panelGrid>
+        </h:form>
+        <h:panelGrid columns="1">
+        <h:outputLabel value="Hvala što ste glasali!" rendered="#{jmsPorukaModel.msgText != '4' and jmsPorukaModel.msgText != null}" />
+        </h:panelGrid>
+    </h:body>
+</html>
+

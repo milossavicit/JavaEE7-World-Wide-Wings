@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value=""></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <center><h1>View</h1></center>
+                <h:panelGrid columns="2" styleClass="forma">
+                    <h:outputText value="ID:"/>
+                    <h:outputText value="#{avionController.selected.id}" title="#{bundle.ViewAvionTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAvionLabel_model}"/>
+                    <h:outputText value="#{avionController.selected.model}" title="#{bundle.ViewAvionTitle_model}"/>
+                    <h:outputText value="Br. mesta: "/>
+                    <h:outputText value="#{avionController.selected.brMesta}" title="#{bundle.ViewAvionTitle_brMesta}"/>
+                    <h:outputText value="Registarski br.: "/>
+                    <h:outputText value="#{avionController.selected.registarskiBr}" title="#{bundle.ViewAvionTitle_registarskiBr}"/>
+                    <h:outputText value="ID kompanije: "/>
+                    <h:outputText value="#{avionController.selected.idKompanije}" title="#{bundle.ViewAvionTitle_idKompanije}"/>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="2">
+                <h:commandButton action="#{avionController.destroyAndView}" value="#{bundle.ViewAvionDestroyLink}"/>
+                <h:button outcome="Edit" value="#{bundle.ViewAvionEditLink}"/>
+                </h:panelGrid>
+                <h:panelGrid columns="3">
+                <h:commandButton action="#{avionController.prepareCreate}" value="Kreiraj novi avion" />
+                <h:commandButton action="#{avionController.prepareList}" value="Prikaži sve avione"/>
+                <h:button outcome="/admin/index" value="#{bundle.ViewAvionIndexLink}"/>
+                </h:panelGrid>
+                <br />
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

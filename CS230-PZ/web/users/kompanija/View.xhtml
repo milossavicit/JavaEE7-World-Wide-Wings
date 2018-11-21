@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value=""></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <center><h1>View</h1></center>
+                <h:panelGrid columns="2" styleClass="forma">
+                    <h:outputText value="#{bundle.ViewKompanijaLabel_id}"/>
+                    <h:outputText value="#{kompanijaController.selected.id}" title="#{bundle.ViewKompanijaTitle_id}"/>
+                    <h:outputText value="Naziv kompanije: "/>
+                    <h:outputText value="#{kompanijaController.selected.nazivKompanije}" title="#{bundle.ViewKompanijaTitle_nazivKompanije}"/>
+                    <h:outputText value="Država: "/>
+                    <h:outputText value="#{kompanijaController.selected.drzava}" title="#{bundle.ViewKompanijaTitle_drzava}"/>
+                    <h:outputText value="Sedište: "/>
+                    <h:outputText value="#{kompanijaController.selected.sediste}" title="#{bundle.ViewKompanijaTitle_sediste}"/>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="2">
+                <h:commandButton action="#{kompanijaController.prepareList}" value="Prikaži sve kompanije"/>
+                <h:button outcome="/users/index" value="#{bundle.ViewKompanijaIndexLink}"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
